@@ -1,0 +1,74 @@
+class LabGame {
+    field int p;
+    field int r;
+    field int cost;
+    field boolean running;
+
+    constructor LabGame new() {
+        let p = 0;
+        let r = 1;
+        let cost = 5;
+        let running = true;
+
+        return this;
+    }
+
+    method void run() {
+        var char key;
+
+        do Output.printString("LAB");
+        do Output.println();
+        do Output.printString("C U Q");
+        do Output.println();
+
+        while (running) {
+            let key = Keyboard.keyPressed();
+
+            if (key = 67) {
+                let p = p + r;
+                do show();
+                do waitKeyRelease();
+            }
+
+            if (key = 85) {
+                if (~(p < cost)) {
+                    let p = p - cost;
+                    let r = r + 1;
+                    let cost = cost + 5;
+                }
+                do show();
+                do waitKeyRelease();
+            }
+
+            if (key = 81) {
+                let running = false;
+            }
+        }
+
+        return;
+    }
+
+    method void show() {
+        do Output.printString("P=");
+        do Output.printInt(p);
+        do Output.printString(" R=");
+        do Output.printInt(r);
+        do Output.printString(" C=");
+        do Output.printInt(cost);
+        do Output.println();
+
+        return;
+    }
+
+    method void waitKeyRelease() {
+        while (~(Keyboard.keyPressed() = 0)) {
+        }
+
+        return;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+}

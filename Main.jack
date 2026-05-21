@@ -1,0 +1,11 @@
+class Main {
+    function void main() {
+        var LabGame game;
+
+        let game = LabGame.new();
+        do game.run();
+        do game.dispose();
+
+        return;
+    }
+}
